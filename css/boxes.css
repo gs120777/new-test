@@ -1,0 +1,199 @@
+.game-boxes {
+    max-width: 800px;
+}
+
+.game-boxes > .game-box {
+    display: inline-block;
+    width: 24%;
+    transition-duration: 0.2s;
+}
+
+@media (max-width: 767px) {
+    .game-boxes > .game-box {
+        width: 32.5%;
+    }
+}
+
+@media (max-width: 479px) {
+    .game-boxes > .game-box {
+        width: 32%;
+    }
+}
+
+@media (max-width: 319px) {
+    .game-boxes > .game-box {
+        width: 48%;
+    }
+}
+
+.game-boxes .game-box img {
+    width: auto;
+}
+
+.game-boxes .game-box-product img {
+    width: 25% !important;
+    margin-top: 37% !important;
+}
+
+.game-box > div {
+    position: absolute;
+}
+
+.game-box .game-box-front {
+    position: relative;
+}
+
+.game-box-product {
+    z-index: 1;
+}
+
+.game-box-inside {
+    z-index: 1;
+}
+
+.game-box-front {
+    z-index: 2;
+}
+
+.game-box-lid {
+    z-index: 3;
+}
+
+.game-boxes .game-box.is-box-opened > .game-box-lid {
+    -webkit-animation: winner 2s forwards;
+    animation: winner 2s forwards;
+}
+
+.game-boxes .game-box.is-box-won > .game-box-product.shown {
+    -webkit-animation: winner 4s infinite alternate;
+    animation: winner 4s infinite alternate;
+}
+
+.game-box:hover {
+    -webkit-animation: winnable 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    animation: winnable 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@-webkit-keyframes winnable {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes winnable {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-webkit-keyframes rotateIn {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes winner {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes winner {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes winner {
+    from {
+        top: 0;
+    }
+    to {
+        top: -40px;
+    }
+}
+
+@media (max-width: 500px) {
+    @-webkit-keyframes winner {
+        from {
+            top: 0;
+        }
+        to {
+            top: -30px;
+        }
+    }
+    @keyframes winner {
+        from {
+            top: 0;
+        }
+        to {
+            top: -30px;
+        }
+    }
+}
