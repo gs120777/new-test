@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porsche 911 GT3 — Interactive Configurator</title>
+  <link rel="stylesheet" href="./css/porsche-gt3.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader">
+    <div class="crest">PORSCHE</div>
+    <div class="title">911 <em>GT3</em></div>
+    <div class="bar"><i></i></div>
+  </div>
+
+  <!-- 3D canvas -->
+  <canvas id="stage"></canvas>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="crest">PORSCHE</div>
+      <div class="model">911 <em>GT3</em></div>
+    </div>
+    <div class="hud">
+      <button class="pill" id="hudRotate" title="Auto-rotate">360° Rotate</button>
+      <button class="pill" id="hudEnv" title="Cycle environment">Env: studio</button>
+      <button class="pill" id="hudShot" title="Save screenshot">Screenshot</button>
+      <button class="pill" id="hudReset" title="Reset view">Reset</button>
+    </div>
+  </div>
+
+  <!-- Configurator panel -->
+  <div class="panel">
+    <div class="tabs">
+      <div class="tab active" data-tab="exterior">Exterior</div>
+      <div class="tab" data-tab="wheels">Wheels</div>
+      <div class="tab" data-tab="interior">Interior</div>
+      <div class="tab" data-tab="features">Features</div>
+    </div>
+
+    <div class="tab-content">
+      <!-- Exterior -->
+      <div class="tab-pane" data-tab="exterior" style="display:block;">
+        <div class="section">
+          <h3>Paint Color</h3>
+          <div class="swatches" id="paintSwatches"></div>
+          <div class="swatch-label" id="paintLabel"></div>
+        </div>
+        <div class="section">
+          <h3>Brake Calipers</h3>
+          <div class="swatches" id="caliperOpts"></div>
+        </div>
+      </div>
+
+      <!-- Wheels -->
+      <div class="tab-pane" data-tab="wheels" style="display:none;">
+        <div class="section">
+          <h3>Wheel Finish — Center-Lock</h3>
+          <div class="options" id="wheelOpts"></div>
+        </div>
+        <div class="section">
+          <h3>About</h3>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">
+            21" rear / 20" front forged center-lock wheels. Magnesium option available
+            with the Weissach package.
+          </div>
+        </div>
+      </div>
+
+      <!-- Interior -->
+      <div class="tab-pane" data-tab="interior" style="display:none;">
+        <div class="section">
+          <h3>Interior Trim</h3>
+          <div class="swatches" id="interiorOpts"></div>
+        </div>
+        <div class="section">
+          <h3>Tip</h3>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">
+            Use the <strong>Interior</strong> camera below or open the doors in
+            <strong>Features</strong> to inspect the cabin.
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="tab-pane" data-tab="features" style="display:none;">
+        <div class="section">
+          <h3>Animations</h3>
+          <div class="toggles">
+            <div class="toggle on" id="togWing"><span>Rear Wing Deployed</span><span class="sw"></span></div>
+            <div class="toggle" id="togDoors"><span>Open Doors</span><span class="sw"></span></div>
+            <div class="toggle" id="togHood"><span>Open Engine Cover</span><span class="sw"></span></div>
+            <div class="toggle" id="togLights"><span>Headlights On</span><span class="sw"></span></div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>Controls</h3>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+            • <strong>Drag</strong> to orbit · <strong>Scroll</strong> to zoom<br/>
+            • <strong>Right-drag</strong> to pan<br/>
+            • Use the camera dock below for instant angles
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom camera dock -->
+  <div class="dock">
+    <button class="cam active" data-cam="hero">Hero</button>
+    <button class="cam" data-cam="front">Front</button>
+    <button class="cam" data-cam="side">Side</button>
+    <button class="cam" data-cam="rear">Rear</button>
+    <button class="cam" data-cam="top">Top</button>
+    <button class="cam" data-cam="interior">Interior</button>
+    <button class="cam" data-cam="detail">Wheel</button>
+  </div>
+
+  <!-- Specs -->
+  <div class="specs">
+    <div class="item"><div class="v">502</div><div class="l">HP</div></div>
+    <div class="item"><div class="v">3.2s</div><div class="l">0–100 KM/H</div></div>
+    <div class="item"><div class="v">318</div><div class="l">TOP KM/H</div></div>
+    <div class="item"><div class="v">4.0L</div><div class="l">FLAT-SIX</div></div>
+  </div>
+
+  <div class="ticker"><span class="dot"></span>Real-time PBR · WebGL2</div>
+
+  <script type="module" src="./js/porsche-gt3.js?v=1"></script>
+</body>
+</html>
